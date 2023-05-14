@@ -1,5 +1,4 @@
-const div = document.getElementById('container'),
-    tbody= document.getElementById('tbody');
+const tbody= document.getElementById('tbody');
 
 let arr = JSON.parse(localStorage.getItem('myArray'));
 
