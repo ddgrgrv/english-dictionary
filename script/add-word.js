@@ -1,10 +1,10 @@
 const inputEng = document.getElementById('input-eng-word'),
     inputRus = document.getElementById('input-rus-word'),
-    innerText = document.getElementById('inner-text'),
+    
     confirmBtn = document.getElementById('confirm-btn');
 
 //хранилище всех слов
-let arr = [];
+let arr = JSON.parse(localStorage.getItem('myArray'));
 
 
 //добавляем возможность записи новых слов в словарик
@@ -22,14 +22,7 @@ function addNewWord(){
     alert('Вы добавили новое слово!');
 }
 
-//Добавляем рандомное слово из массива arr на англ на экран
-export function addRandomWord(){
-    arr = JSON.parse(localStorage.getItem('myArray'));
-    
-    if(!Object.is(innerText,null)){
-        innerText.textContent = arr[Math.floor(Math.random()*arr.length)].eng;
-    }
-}
+
 
 try {
     confirmBtn.addEventListener('click', (e)=>{
@@ -38,4 +31,4 @@ try {
     });
 } catch {}
 
-export default {arr, addRandomWord};
+export default { arr, addRandomWord};
