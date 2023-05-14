@@ -1,15 +1,8 @@
-// import { arr} from "./add-word.js";
+import  arr from "./add-word.js";
+import {addRandomWord} from "./add-word.js";
 
-const innerText = document.getElementById('inner-text'),
-    input = document.getElementById('input'),
-    btn = document.getElementById('btn'),
-    inputEng = document.getElementById('input-eng-word'),
-    inputRus = document.getElementById('input-rus-word'),
-    confirmBtn = document.getElementById('confirm-btn');
-
-let arr = [];
-
-
+const input = document.getElementById('input'),
+    btn = document.getElementById('btn');
 
 //Сравниваем введенное пользователем слово с переводом
 function checkRightTranslate(){
@@ -33,39 +26,11 @@ function checkRightTranslate(){
     input.value = '';
 }
 
-//добавляем возможность записи новых слов в словарик
-function addNewWord(){
-    let newWord = {
-        eng: inputEng.value, rus: inputRus.value
-    };
-    arr.push(newWord)
-    localStorage.myArray = JSON.stringify(arr);
-    inputEng.value = '';
-    inputRus.value = '';
-    alert('Вы добавили новое слово!');
-}
-
-//Добавляем рандомное слово из массива arr на англ 
-function addRandomWord(){
-    arr = JSON.parse(localStorage.getItem('myArray'));
-    innerText.textContent = arr[Math.floor(Math.random()*arr.length)].eng;
-}
-
-
-try {
-    confirmBtn.addEventListener('click', (e)=>{
-        e.preventDefault();
-        addNewWord();
-    });
-} catch {}
-
 try {
     btn.addEventListener('click', checkRightTranslate);
-} catch {}
+} catch{}
 
-if (!Object.is(innerText,null)) {
-    document.addEventListener('DOMContentLoaded',addRandomWord);  
-}
+document.addEventListener('DOMContentLoaded',addRandomWord);  
 
 
 
